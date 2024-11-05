@@ -79,3 +79,10 @@ Komplette Liste: GitHub Emoji Cheat Sheet
 # Inspirierendes Zitat
 > "Man braucht keine großen Daten, wenn man die richtigen Fragen stellt!"
 > - Drew Conway, Datenwissenschaftler
+
+# Code Snippet
+## Beispiel für Python-Code
+Hier ein einfaches Python-Snippet, das "Hallo Welt!" ausgibt:
+
+```python
+print("Hallo Welt!")
