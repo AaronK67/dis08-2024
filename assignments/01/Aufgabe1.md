@@ -74,3 +74,8 @@ Verwende ---, *** oder ___ für eine Trennlinie:
 
 Füge Emojis mit :emoji_name: hinzu, z.B. :smile: 😄
 Komplette Liste: GitHub Emoji Cheat Sheet
+
+
+# Inspirierendes Zitat
+> "Man braucht keine großen Daten, wenn man die richtigen Fragen stellt!"
+> - Drew Conway, Datenwissenschaftler
