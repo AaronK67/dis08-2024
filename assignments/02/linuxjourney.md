@@ -121,7 +121,23 @@ BSp = $ alias foobar='ls -la'
 How can you exit from the shell? = Exit
 
 
+## The Game history commands 
 
+  249  pwd
+  250  cd downloads
+  251  pwd
+  252  cd -
+  253  pwd
+  254  cd Downloads
+  255  pwd
+  256  cd /Users/aaronklatt/Downloads/bashcrawl-stable-2024.02.09/entrance 
+  257  cat scroll
+  258  ls
+  259  cd
+  260  cd
+  261  cd
+  262  cd
+  263  ls
 
 
 
