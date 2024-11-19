@@ -1,0 +1,149 @@
+# Quiz Aufgabe 4
+
+
+
+## Extract all email addresses from the text.
+(base) aaronklatt@Mac dis08 % grep -E -o "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" contacts.csv
+
+## Extract all phone numbers from the text.
+123
+555
+123-4567
+456
+555
+987-6543
+789
+555
+555-5555
+321
+555
+321-6789
+654
+555
+876-5432
+987
+555
+432-5678
+246
+555
+246-1357
+135
+555
+531-2468
+864
+555
+864-9753
+975
+555
+975-8642
+
+## Extract all names that start with the letter ‘J’.
+(base) aaronklatt@Mac dis08 % grep -Eo '\bJ\w*' contacts.csv
+John
+Jane
+Johnson
+
+## Extract all street names that contain the word 'St'.
+(base) aaronklatt@Mac dis08 % grep -Eo '\b([A-Za-z0-9,.-]+\s)*\w*St\w*(\s[A-Za-z0-9,.-]+)*\b' contacts.csv
+John Doe, 123 Main St
+Jane Smith, 456 Oak St
+Robert Brown, 654 Cedar St
+Alice White, 987 Elm St
+David Green, 246 Birch St
+Emily Black, 135 Walnut St
+Chris Blue, 864 Chestnut St
+
+## Extract all addresses in ‘USA’.
+(base) aaronklatt@Mac dis08 % grep -Eo '\b([A-Za-z0-9,.-]+\s)*\w*St\w*(\s[A-Za-z0-9,.-]+)*\b' contacts.csv
+John Doe, 123 Main St
+Jane Smith, 456 Oak St
+Robert Brown, 654 Cedar St
+Alice White, 987 Elm St
+David Green, 246 Birch St
+Emily Black, 135 Walnut St
+Chris Blue, 864 Chestnut St
+(base) aaronklatt@Mac dis08 % grep -i 'USA' contacts.csv
+John Doe, 123 Main St, Anytown, USA, john.doe@example.com, (555) 123-4567
+Jane Smith, 456 Oak St, Sometown, USA, jane.smith@gmail.com, (555) 987-6543
+Mike Johnson, 789 Pine Rd, Othertown, USA, mjohnson@yahoo.com, (555) 555-5555
+Linda Harris, 321 Maple Dr, Newcity, USA, lharris@hotmail.com, (555) 321-6789
+Robert Brown, 654 Cedar St, Oldtown, USA, rbrown@company.com, (555) 876-5432
+Alice White, 987 Elm St, Smalltown, USA, alice.white@domain.org, (555) 432-5678
+David Green, 246 Birch St, Uptown, USA, dgreen@domain.net, (555) 246-1357
+Emily Black, 135 Walnut St, Middletown, USA, eblack@webmail.com, (555) 531-2468
+Chris Blue, 864 Chestnut St, Metropolis, USA, cblue@provider.com, (555) 864-9753
+Susan Silver, 975 Cypress Ave, Bigcity, USA, ssilver@university.edu, (555) 975-8642
+
+## Extract the last names of all people.
+(base) aaronklatt@Mac dis08 % grep -o '^[^,]*' contacts.csv | awk '{print $2}'
+Doe
+Smith
+Johnson
+Harris
+Brown
+White
+Green
+Black
+Blue
+Silver
+
+## Extract all email domains (part after the @ sign).
+(base) aaronklatt@Mac dis08 % grep -Eo '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+' contacts.csv | sed 's/.*@//'
+example.com
+gmail.com
+yahoo.com
+hotmail.com
+company.com
+domain.org
+domain.net
+webmail.com
+provider.com
+university.edu
+
+## Extract all instances of the first name ‘David’ along with their full address (street and city).
+(base) aaronklatt@Mac dis08 % grep -i 'David' contacts.csv | grep -Eo '.*David[^,]+, [^,]+, [^,]+'
+David Green, 246 Birch St, Uptown
+
+## Find all entries where the phone number ends with ‘7’.
+(base) aaronklatt@Mac dis08 % grep -Eo '\b[0-9\(\)\+\-\s]*7\b' contacts.csv
+4567
+987
+987
+1357
+
+## Extract all instances of first names that end with the letter 'e'.
+(base) aaronklatt@Mac dis08 % grep -o '\b[a-zA-Z]*e\b' contacts.csv
+Doe
+doe
+example
+Jane
+jane
+Mike
+Pine
+Maple
+Alice
+White
+alice
+white
+Blue
+cblue
+Ave
+
+## History 
+(base) aaronklatt@Mac dis08 % history
+  290  grep -E -o "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" contacts.csv
+  291  grep -E -o "(\+?\d{1,4}[\s\-]?)?(\(?\d{1,4}\)?[\s\-]?)?(\d{1,4}[\s\-]?\d{1,4}[\s\-]?\d{1,4})" contacts.csv
+  292  (\+?\d{1,4}[\s\-]?)?(\(?\d{1,4}\)?[\s\-]?)?(\d{1,4}[\s\-]?\d{1,4}[\s\-]?\d{1,4})
+  293  pwd
+  294  cd dis08
+  295  ls
+  296  grep -E -o '(\+?\d{1,4}[\s\-]?)?(\(?\d{1,4}\)?[\s\-]?)?(\d{1,4}[\s\-]?\d{1,4}[\s\-]?\d{1,4})' contacts.csv
+  297  grep -Eo '\bJ\w*' contacts.csv
+  298  grep -Eo '\b\w*St\w*\b' contacts.csv
+  299  grep -Eo '\b([A-Za-z0-9,.-]+\s)*\w*St\w*(\s[A-Za-z0-9,.-]+)*\b' contacts.csv
+  300  grep -i 'USA' contacts.csv
+  301  grep -o '^[^,]*' contacts.csv | awk '{print $2}'
+  302  grep -Eo '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+' contacts.csv | sed 's/.*@//'
+  303  grep -i 'David' contacts.csv | grep -Eo '.*David[^,]+, [^,]+, [^,]+'
+  304  grep -Eo '\b[0-9\(\)\+\-\s]*7\b' contacts.csv
+  305  grep -o '\b[a-zA-Z]*e\b' contacts.csv
